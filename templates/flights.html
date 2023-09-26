@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+
+<div class="row mb-3 text-center">
+    <div class="col-md-12 ftext-center">
+        <div><br><br></div>
+      <h1 class="display-3 lex container">✈️ Flight Search Results✈️</h1>
+      <p class="lead">Want to find the best flight offers?</p>
+      <hr class="my-2">
+      <p>You've found the right place! Check out this powerful flight search engine which would bring you the best offers.</p>
+    <div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1></h1>
+            <table class="table">
+                <thead>
+                <td style="color:#3390FF;"><b>Nr</b></td>
+                <td style="color:#3390FF;"><b>Price, USD</b></td>
+                <td style="color:#3390FF;"><b>City Start</b></td>
+                <td style="color:#3390FF;"><b>Airport Start</b></td>
+                <td style="color:#3390FF;"><b>City Arrive</b></td>
+                <td style="color:#3390FF;"><b>Airport Arrive</b></td>
+                <td style="color:#3390FF;"><b>Date Start</b></td>
+                <td style="color:#3390FF;"><b>Time Start</b></td>
+                <td style="color:#3390FF;"><b>Date Arrive</b></td>
+                <td style="color:#3390FF;"><b>Time Arrive</b></td>
+                <td style="color:#3390FF;"><b>Nr of Stopovers</b></td>
+                <td style="color:#3390FF;"><b>Duration, hrs</b></td>
+                {% if fl_type == "round" %}
+                <td style="color:#3390FF;"><b>Date Return</b></td>
+                <td style="color:#3390FF;"><b>Time Return</b></td>
+                <td style="color:#3390FF;"><b>Date Arrive</b></td>
+                <td style="color:#3390FF;"><b>Time Arrive</b></td>
+                <td style="color:#3390FF;"><b>Nr of Stopovers</b></td>
+                <td style="color:#3390FF;"><b>Duration, hrs</b></td>
+                {% endif %}
+                </thead>
+                {% for flight in flights: %}
+                <tr>
+                    <td>{{ flight.count }}</td>
+                    <td>{{ flight.price }}</td>
+                    <td>{{ flight.origin_city }}</td>
+                    <td>{{ flight.origin_airport }}</td>
+                    <td>{{ flight.destination_city }}</td>
+                    <td>{{ flight.destination_airport }}</td>
+                    <td>{{ flight.out_date }}</td>
+                    <td>{{ flight.out_time }}</td>
+                    <td>{{ flight.arrive_date }}</td>
+                    <td>{{ flight.arrive_time }}</td>
+                    <td>{{ flight.stopovers_count }}</td>
+                    <td>{{ flight.duration }}</td>
+                    {% if fl_type == "round" %}
+                    <td>{{ flight.back_out_date }}</td>
+                    <td>{{ flight.back_out_time }}</td>
+                    <td>{{ flight.back_arrive_date }}</td>
+                    <td>{{ flight.back_arrive_time }}</td>
+                    <td>{{ flight.back_stopovers_count }}</td>
+                    <td>{{ flight.back_duration }}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('home') }}" role="button">Back To Search</a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

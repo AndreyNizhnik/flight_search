@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% import 'bootstrap5/form.html' as wtf %}
+{% block title %}Flights Search{% endblock %}
+
+{% block content %}
+<div class="row mb-3 text-center">
+    <div class="col-md-12 ftext-center">
+        <div><br><br></div>
+      <h1 class="display-3 lex container">✈️ Flight Search ✈️</h1>
+      <p class="lead">Want to find the best flight offers?</p>
+      <hr class="my-2">
+      <p>You've found the right place! Check out this powerful flight search engine which would bring you the best offers.</p>
+    <div>
+</div>
+<div class="row mb-3 text-center">
+    <div><br><br></div>
+        <div class="col-md-4 text-center"></div>
+        <div class="col-md-4 text-center">
+            {{ wtf.render_form(form, novalidate=True) }}
+        </div>
+    <div>
+{% endblock %}
